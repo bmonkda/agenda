@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Country;
+use App\Models\Organization;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,6 +20,16 @@ class ContactFactory extends Factory
     {
         return [
             //
+            'first_name' => $this->faker->firstName,
+            'last_name' => $this->faker->lastname,
+            'organization_id' => Organization::all()->random()->id,
+            'email' => $this->faker->email,
+            'phone' => $this->faker->phoneNumber,
+            'address' => $this->faker->address,
+            'city' => $this->faker->city,
+            'state' => $this->faker->state,
+            'country_id' => Country::all()->random()->id,
+            'postal_code' => $this->faker->postcode,
         ];
     }
 }
