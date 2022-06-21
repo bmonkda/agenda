@@ -1,5 +1,14 @@
 <script setup>
 import { Head, Link } from '@inertiajs/inertia-vue3';
+import { defineComponent } from '@vue/runtime-core';
+
+defineComponent({
+    name: 'Welcome',
+    components: {
+        Head,
+        Link,
+    },
+});
 
 defineProps({
     canLogin: Boolean,
@@ -10,7 +19,10 @@ defineProps({
 </script>
 
 <template>
-    <Head title="Welcome" />
+    <Head>
+        <title>Welcome</title>
+        <meta name="description" content="Bienvenido a la página principal.">
+    </Head>
 
     <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
         <div v-if="canLogin" class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
@@ -26,9 +38,11 @@ defineProps({
                 <Link v-if="canRegister" :href="route('register')" class="ml-4 text-sm text-gray-700 underline">
                     Register
                 </Link>
-            </template>
+            </template> 
         </div>
 
+        <!-- {{ $page.props.user }} -->
+        
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
             <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
                 <svg
