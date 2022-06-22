@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Contact;
 use App\Http\Requests\StoreContactRequest;
 use App\Http\Requests\UpdateContactRequest;
+use App\Models\Country;
+use App\Models\Organization;
 use Inertia\Inertia;
 
 class ContactController extends Controller
@@ -22,7 +24,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $contacts = Contact::all();
+        $contacts = Contact::with(['organization', 'country'])->get();
+        /* return $contacts; */
         return Inertia::render('Contacts/Index', compact('contacts'));
     }
 

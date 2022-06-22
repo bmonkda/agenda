@@ -28,4 +28,12 @@ class Contact extends Model
         'postal_code',
     ]; */
 
+    public function country(){
+        return $this->belongsTo(Country::class);
+    }
+
+    public function organization(){
+        return $this->belongsTo(Organization::class);
+    }
+
 }
