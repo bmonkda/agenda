@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Contact;
 use App\Http\Requests\StoreContactRequest;
 use App\Http\Requests\UpdateContactRequest;
+use Inertia\Inertia;
 
 class ContactController extends Controller
 {
@@ -15,7 +16,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        /* $contacts = Contact::all(); */
+        return Inertia::render('Contacts/Index');
     }
 
     /**
@@ -25,7 +27,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Contacts/Create');
     }
 
     /**
@@ -58,7 +60,7 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact)
     {
-        //
+        return Inertia::render('Contacts/Edit', compact('contact'));
     }
 
     /**
