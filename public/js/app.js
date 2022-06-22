@@ -23533,7 +23533,8 @@ __webpack_require__.r(__webpack_exports__);
   /* Así es en Laravel < 8 */
   components: {
     AppLayout: _Layouts_AppLayout_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
-  }
+  },
+  props: {}
 });
 
 /***/ }),
@@ -23555,6 +23556,12 @@ __webpack_require__.r(__webpack_exports__);
   /* Así es en Laravel < 8 */
   components: {
     AppLayout: _Layouts_AppLayout_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  props: {
+    contact: {
+      type: Object,
+      required: true
+    }
   }
 });
 
@@ -23575,6 +23582,12 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'Index',
+  props: {
+    contacts: {
+      type: Array,
+      required: true
+    }
+  },
   setup: function setup(__props, _ref) {
     var expose = _ref.expose;
     expose();
@@ -27523,7 +27536,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [_hoisted_1];
     }),
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_2];
+      return [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("pre", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.contact), 1
+      /* TEXT */
+      )];
     }),
     _: 1
     /* STABLE */
@@ -27569,7 +27584,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [_hoisted_1];
     }),
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_2];
+      return [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("pre", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.contacts), 1
+      /* TEXT */
+      )];
     }),
     _: 1
     /* STABLE */

@@ -22,8 +22,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        /* $contacts = Contact::all(); */
-        return Inertia::render('Contacts/Index');
+        $contacts = Contact::all();
+        return Inertia::render('Contacts/Index', compact('contacts'));
     }
 
     /**

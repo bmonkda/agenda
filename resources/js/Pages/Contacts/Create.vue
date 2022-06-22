@@ -19,10 +19,15 @@
   import AppLayout from '@/Layouts/AppLayout.vue';
 
   export default {
+    
     /* Así es en Laravel < 8 */
     components: {
       AppLayout,
-    } 
+    },
+    
+    props:{
+      
+    }
 
   }
 </script>

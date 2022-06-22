@@ -10,6 +10,8 @@
     </template>
 
     <h1 class="text-2xl font-semibold">Edición de contacto</h1>
+
+    <pre>{{ contact }}</pre>
   </app-layout>
 
 </template>
@@ -19,10 +21,18 @@
   import AppLayout from '@/Layouts/AppLayout.vue';
 
   export default {
+
     /* Así es en Laravel < 8 */
     components: {
       AppLayout,
-    } 
+    },
+
+    props:{
+      contact:{
+        type: Object,
+        required: true
+      }
+    }
 
   }
 </script>
