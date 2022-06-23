@@ -28,7 +28,7 @@
                   </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                  <tr v-for="contact in contacts" :key="contact.id">
+                  <tr v-for="contact in contacts.data" :key="contact.id">
                     <td class="px-6 py-4 whitespace-nowrap">
                       <div class="flex items-center">
                         <!-- <div class="flex-shrink-0 h-10 w-10">
@@ -57,6 +57,9 @@
                   </tr>
                 </tbody>
               </table>
+
+              <pagination :pagination="contacts"></pagination>
+
             </div>
           </div>  
         </div>
@@ -71,12 +74,13 @@
 
 <script setup>/* Laravel 9 */
   import AppLayout from '@/Layouts/AppLayout.vue';
+  import Pagination from '@/Components/Pagination.vue'
 
   defineProps({
-    contacts: {
+    contacts: Object, /* {
       type: Array,
       required: true
-    }
+    } */
   });
 </script>
 
