@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Contact;
 use App\Http\Requests\StoreContactRequest;
 use App\Http\Requests\UpdateContactRequest;
-use App\Models\Country;
-use App\Models\Organization;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class ContactController extends Controller
@@ -22,11 +21,17 @@ class ContactController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $contacts = Contact::with(['organization', 'country'])->paginate();
+
+        $filters = $request->all('search');
+        /* return $filters; */
+
+        $contacts = Contact::with(['organization', 'country'])
+                    ->filter($filters) //scope en el modelo Contact
+                    ->paginate();
         /* return $contacts; */
-        return Inertia::render('Contacts/Index', compact('contacts'));
+        return Inertia::render('Contacts/Index', compact('contacts', 'filters'));
     }
 
     /**

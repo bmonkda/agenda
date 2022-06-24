@@ -1,7 +1,6 @@
 <template>
-  <!--  Así es en Laravel  8  -->
-  <!-- <AppLayout title="Contacts">  Así no me funciona bien el buscador investigar para esto-->
-  <app-layout title="Contacts">
+<!--  Laravel 9  -->
+  <AppLayout title="Contacts">
 
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -19,7 +18,7 @@
 
               <div class="px-6 py-4">
                 <Input v-model="search" type="text" class="w-full" placeholder="Ingrese texto para filtrar"></Input>
-                <!-- {{ search }} -->
+                {{search}}
               </div>
 
               <table class="min-w-full divide-y divide-gray-200">
@@ -76,46 +75,38 @@
       <pre>{{ contacts }}</pre> -->
     </div>
 
-  </app-layout>>
+  </AppLayout>
 </template>
 
-<script>
+<script setup>/* Laravel 9 */
   import AppLayout from '@/Layouts/AppLayout.vue';
   import Pagination from '@/Components/Pagination.vue'
   import Input from '@/Jetstream/Input.vue'
-  import pickBy from 'lodash/pickBy'
+  import { defineComponent } from '@vue/runtime-core';
 
-  export default {
+  defineComponent({
     components: {
+      search: 'dadada',
       AppLayout,
       Pagination,
       Input,
     },
 
-    data() {
-      return {
-        search: this.filters.search,
-      }
-    },
-
-    watch: {
-      search($value) {
-        this.$inertia.get('/contacts', pickBy({ search: $value }), { preserveState: true })
-      }
-    },
-
-    props: {
-      filters:Object, 
-      contacts: Object, /* {
+  });
+  
+  defineProps({
+    contacts: Object, /* {
       type: Array,
       required: true
     } */
+  });
 
-    },
-
-
-
-  }
+  /* este data no me quiere funcionar con este esquema buscar como hacer. Implemente metodología anterior */
+  data() {
+    return {
+      search: '',
+    }
+  },
 
 </script>
 

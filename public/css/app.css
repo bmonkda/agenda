@@ -977,17 +977,14 @@ select {
 .z-50 {
   z-index: 50;
 }
-.z-40 {
-  z-index: 40;
-}
 .z-10 {
   z-index: 10;
 }
+.z-40 {
+  z-index: 40;
+}
 .col-span-6 {
   grid-column: span 6 / span 6;
-}
-.row-auto {
-  grid-row: auto;
 }
 .mx-auto {
   margin-left: auto;
@@ -2223,10 +2220,6 @@ select {
 
   .md\:mt-0 {
     margin-top: 0px;
-  }
-
-  .md\:inline-flex {
-    display: inline-flex;
   }
 
   .md\:grid {
