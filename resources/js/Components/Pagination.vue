@@ -28,6 +28,8 @@
                         <!-- </svg> -->
                     <!-- </a> -->
                     
+                    <!-- {{ $page }} --> <!-- para saber lo que viaja en la propiedad $page -->
+
                     <template v-for="(link, key) in pagination.links"> 
                         <div :key="key" 
                             v-if="link.url == null" 
@@ -37,7 +39,7 @@
 
                         <Link :key="'link-' + key" 
                             v-else 
-                            :href="link.url" 
+                            :href="link.url + '&search=' + $page.props.filters.search"  
                             class="relative inline-flex items-center px-4 py-2 border text-sm font-medium" 
                             :class="link.active ?  'z-10 bg-indigo-50 border-indigo-500 text-indigo-600' : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50'"
                             v-html="link.label" />
