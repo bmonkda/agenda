@@ -9,9 +9,115 @@
       </h2>
     </template>
 
-    <h1 class="text-2xl font-semibold">Edición de contacto</h1>
+    <div class="container py-8">
+      <h1 class="text-3xl font-semibold text-gray-700 mb-3">
+        <span class="text-indigo-500">Contacto /</span> Edit
+      </h1>
 
-    <pre>{{ contact }}</pre>
+      <div class="bg-white px-6 py-8 rounded-lg shadow">
+
+        <jet-validation-errors></jet-validation-errors>
+
+        <div class="grid grid-cols-2 gap-6">
+
+          <div>
+            <label>
+              First Name
+              <Input v-model="form.first_name" type="text" class="w-full"></Input>
+            </label>
+          </div>
+
+          <div>
+            <label>
+              Last Name
+              <Input v-model="form.last_name" type="text" class="w-full"></Input>
+            </label>
+          </div>
+
+          <div>
+            <label>
+              Organization
+              <!-- <Input v-model="contact.organization_id" type="text" class="w-full"></Input> -->
+              <select v-model="form.organization_id" class="form-control w-full">
+                <option value="" selected disabled>
+                  Seleccione una opción
+                </option>
+                <option v-for="organization in organizations" :value="organization.id" :key="'organization-' + organization.id">
+                  {{ organization.name }}
+                </option>
+              </select>
+            </label>
+          </div>
+
+          <div>
+            <label>
+              Email
+              <Input v-model="form.email" type="text" class="w-full"></Input>
+            </label>
+          </div>
+
+          <div>
+            <label>
+              Phone
+              <Input v-model="form.phone" type="text" class="w-full"></Input>
+            </label>
+          </div>
+
+          <div>
+            <label>
+              Address
+              <Input v-model="form.address" type="text" class="w-full"></Input>
+            </label>
+          </div>
+
+          <div>
+            <label>
+              City
+              <Input v-model="form.city" type="text" class="w-full"></Input>
+            </label>
+          </div>
+
+          <div>
+            <label>
+              State
+              <Input v-model="form.state" type="text" class="w-full"></Input>
+            </label>
+          </div>
+
+          <div>
+            <label>
+              Country
+              <!-- <Input v-model="contact.country_id" type="text" class="w-full"></Input> -->
+              <select v-model="form.country_id" class="form-control w-full">
+                <option value="" selected disabled>
+                  Seleccione una opción
+                </option>
+                <option v-for="country in countries" :value="country.id" :key="'country-' + country.id">
+                  {{ country.name }}
+                </option>
+              </select>
+            </label>
+          </div>
+
+          <div>
+            <label>
+              Postal Code
+              <Input v-model="form.postal_code" type="text" class="w-full"></Input>
+            </label>
+          </div>
+
+        </div>
+
+        <div class="flex justify-end mt-3">
+          <button class="btn btn-indigo" @click="update">
+            Actualizar
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
   </app-layout>
 
 </template>
@@ -19,20 +125,36 @@
 <script>
 
   import AppLayout from '@/Layouts/AppLayout.vue';
+  import Input from '@/Jetstream/Input.vue'
+  import JetValidationErrors from '@/Jetstream/ValidationErrors.vue'
 
   export default {
 
     /* Así es en Laravel < 8 */
     components: {
       AppLayout,
+      Input,
+      JetValidationErrors,
+    },
+
+    data() {
+      return {
+        form: this.contact,
+      }
     },
 
     props:{
-      contact:{
-        type: Object,
-        required: true
-      }
-    }
+      contact: Object,
+      organizations: Array,
+      countries: Array
+    },
+
+    methods: {
+      update() {
+        this.$inertia.put(this.route('contacts.update', this.contact), this.form)
+        /* this.$inertia.form(this.form).put(this.route('contacts.update', this.contact)) */ // funciona igual que la línea de arriba
+      },
+    },
 
   }
 </script>

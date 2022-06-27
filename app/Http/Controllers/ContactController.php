@@ -96,7 +96,11 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact)
     {
-        return Inertia::render('Contacts/Edit', compact('contact'));
+
+        $organizations = Organization::all();
+        $countries = Country::all();
+
+        return Inertia::render('Contacts/Edit', compact('contact', 'organizations','countries'));
     }
 
     /**
@@ -106,9 +110,24 @@ class ContactController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateContactRequest $request, Contact $contact)
+    public function update(Request $request, Contact $contact)
     {
-        //
+        $data = $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'organization_id' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+            'city' => 'required',
+            'state' => 'required',
+            'country_id' => 'required',
+            'postal_code' => 'required',
+        ]);
+
+        $contact->update($data);
+
+        return redirect()->route('contacts.edit', $contact);
     }
 
     /**
