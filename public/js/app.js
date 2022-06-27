@@ -24542,7 +24542,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* PROPS */
     , _hoisted_13)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Link, {
       key: 'link-' + key,
-      href: link.url + '&search=' + _ctx.$page.props.filters.search,
+      href: _ctx.$page.props.filters.search ? link.url + '&search=' + _ctx.$page.props.filters.search : link.url,
       "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["relative inline-flex items-center px-4 py-2 border text-sm font-medium", link.active ? 'z-10 bg-indigo-50 border-indigo-500 text-indigo-600' : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50']),
       innerHTML: link.label
     }, null, 8
