@@ -23632,6 +23632,9 @@ __webpack_require__.r(__webpack_exports__);
       this.$inertia.put(this.route('contacts.update', this.contact), this.form);
       /* this.$inertia.form(this.form).put(this.route('contacts.update', this.contact)) */
       // funciona igual que la línea de arriba
+    },
+    destroy: function destroy() {
+      this.$inertia["delete"](this.route('contacts.destroy', this.contact));
     }
   }
 });
@@ -28053,8 +28056,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, null, 8
       /* PROPS */
       , ["modelValue"])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-        "class": "btn btn-indigo",
+        "class": "btn btn-red mr-3",
         onClick: _cache[10] || (_cache[10] = function () {
+          return $options.destroy && $options.destroy.apply($options, arguments);
+        })
+      }, " Eliminar "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+        "class": "btn btn-indigo",
+        onClick: _cache[11] || (_cache[11] = function () {
           return $options.update && $options.update.apply($options, arguments);
         })
       }, " Actualizar ")])])])];
